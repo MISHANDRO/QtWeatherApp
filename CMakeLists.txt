@@ -30,8 +30,14 @@ find_package(Qt6 COMPONENTS
         Widgets
         REQUIRED)
 
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/resources
+     DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+
 include_directories(WeatherManager)
-add_executable(QtWeather main.cpp include/obj.h include/WeatherApp.cpp
+add_executable(QtWeather main.cpp
+        include/Ui_Wether.h
+        include/WeatherApp.h                 src/WeatherApp.cpp
+
         WeatherManager/WeatherManager.h      WeatherManager/WeatherManager.cpp
         WeatherManager/WeatherInfo.h         WeatherManager/WeatherInfo.cpp
         WeatherManager/Day.h                 WeatherManager/Day.cpp

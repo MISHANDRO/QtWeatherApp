@@ -31,7 +31,9 @@
     <normaloff>images/test.jpg</normaloff>images/test.jpg</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true"/>
+   <string notr="true">QScrollArea { background: transparent; }
+QScrollArea &gt; QWidget &gt; QWidget { background: transparent; }
+QScrollArea &gt; QWidget &gt; QScrollBar { background: palette(base); }</string>
   </property>
   <widget class="QPushButton" name="pushFront">
    <property name="geometry">
@@ -70,7 +72,7 @@
    </property>
    <property name="icon">
     <iconset>
-     <normaloff>../static/images/Front.png</normaloff>../static/images/Front.png</iconset>
+     <normaloff>resources/images/Front.png</normaloff>resources/images/Front.png</iconset>
    </property>
    <property name="iconSize">
     <size>
@@ -90,7 +92,7 @@
     <rect>
      <x>-110</x>
      <y>0</y>
-     <width>551</width>
+     <width>561</width>
      <height>41</height>
     </rect>
    </property>
@@ -115,9 +117,9 @@
   <widget class="QLabel" name="right_city">
    <property name="geometry">
     <rect>
-     <x>760</x>
+     <x>750</x>
      <y>0</y>
-     <width>551</width>
+     <width>561</width>
      <height>41</height>
     </rect>
    </property>
@@ -142,9 +144,9 @@
   <widget class="QLabel" name="cur_city">
    <property name="geometry">
     <rect>
-     <x>310</x>
+     <x>320</x>
      <y>30</y>
-     <width>560</width>
+     <width>561</width>
      <height>41</height>
     </rect>
    </property>
@@ -203,7 +205,7 @@
    </property>
    <property name="icon">
     <iconset>
-     <normaloff>../static/images/Back.png</normaloff>../static/images/Back.png</iconset>
+     <normaloff>resources/images/Back.png</normaloff>resources/images/Back.png</iconset>
    </property>
    <property name="iconSize">
     <size>
@@ -218,10 +220,10 @@
     <bool>false</bool>
    </property>
   </widget>
-  <widget class="QFrame" name="frame">
+  <widget class="QFrame" name="header">
    <property name="geometry">
     <rect>
-     <x>-10</x>
+     <x>0</x>
      <y>0</y>
      <width>1201</width>
      <height>101</height>
@@ -229,7 +231,7 @@
    </property>
    <property name="styleSheet">
     <string notr="true">/* background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #4E4E4E, stop:1 #000000);*/
-background-image: url(../static/images/background-header.png);
+background-image: url(resources/images/background-header.png);
 border-style: solid; 
 border-bottom-width: 2px;
 border-color: #000;
@@ -252,7 +254,11 @@ border-color: #000;
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true"> QScrollBar:vertical {
+    <string notr="true">QScrollBar {
+	background-color: none;
+ }
+ 
+QScrollBar:vertical {
 	border: none;
     background: rgb(45, 45, 68);
     width: 14px;
@@ -332,7 +338,7 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
     </property>
     <property name="styleSheet">
      <string notr="true">QTableWidget {
-    background-color: lightgray;
+    background-color: none;
 }
 
 QTableWidget::item {
@@ -360,7 +366,7 @@ QTableWidget::item:selected {
         </size>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color: none;
+        <string notr="true">background-color: transparent;
 border: none</string>
        </property>
        <property name="frameShape">
@@ -369,260 +375,13 @@ border: none</string>
        <property name="frameShadow">
         <enum>QFrame::Raised</enum>
        </property>
-       <widget class="QTableWidget" name="tableWidget">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>250</y>
-          <width>1141</width>
-          <height>151</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QTableWidget {
-    background-color: lightgray;
-}
-
-QTableWidget::item {
-    padding: 5px;
-}
-
-QTableWidget::item:selected {
-    background-color: darkblue;
-    color: white;
-}</string>
-        </property>
-        <property name="editTriggers">
-         <set>QAbstractItemView::NoEditTriggers</set>
-        </property>
-        <property name="tabKeyNavigation">
-         <bool>false</bool>
-        </property>
-        <property name="dragDropOverwriteMode">
-         <bool>false</bool>
-        </property>
-        <property name="selectionMode">
-         <enum>QAbstractItemView::NoSelection</enum>
-        </property>
-        <property name="selectionBehavior">
-         <enum>QAbstractItemView::SelectColumns</enum>
-        </property>
-        <property name="textElideMode">
-         <enum>Qt::ElideMiddle</enum>
-        </property>
-        <property name="cornerButtonEnabled">
-         <bool>false</bool>
-        </property>
-        <property name="rowCount">
-         <number>2</number>
-        </property>
-        <property name="columnCount">
-         <number>4</number>
-        </property>
-        <attribute name="horizontalHeaderVisible">
-         <bool>false</bool>
-        </attribute>
-        <attribute name="horizontalHeaderCascadingSectionResizes">
-         <bool>true</bool>
-        </attribute>
-        <attribute name="horizontalHeaderMinimumSectionSize">
-         <number>280</number>
-        </attribute>
-        <attribute name="horizontalHeaderDefaultSectionSize">
-         <number>284</number>
-        </attribute>
-        <attribute name="horizontalHeaderHighlightSections">
-         <bool>true</bool>
-        </attribute>
-        <attribute name="verticalHeaderVisible">
-         <bool>false</bool>
-        </attribute>
-        <attribute name="verticalHeaderCascadingSectionResizes">
-         <bool>true</bool>
-        </attribute>
-        <attribute name="verticalHeaderMinimumSectionSize">
-         <number>0</number>
-        </attribute>
-        <attribute name="verticalHeaderDefaultSectionSize">
-         <number>0</number>
-        </attribute>
-        <attribute name="verticalHeaderHighlightSections">
-         <bool>true</bool>
-        </attribute>
-        <attribute name="verticalHeaderShowSortIndicator" stdset="0">
-         <bool>false</bool>
-        </attribute>
-        <attribute name="verticalHeaderStretchLastSection">
-         <bool>true</bool>
-        </attribute>
-        <row>
-         <property name="text">
-          <string>1</string>
-         </property>
-        </row>
-        <row>
-         <property name="text">
-          <string>Новая строка</string>
-         </property>
-        </row>
-        <column>
-         <property name="text">
-          <string>Утро</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>День</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Вечер</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Ночь</string>
-         </property>
-        </column>
-        <item row="0" column="0">
-         <property name="text">
-          <string>dccew</string>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>24</pointsize>
-          </font>
-         </property>
-        </item>
-        <item row="0" column="1">
-         <property name="text">
-          <string>cwecwe</string>
-         </property>
-        </item>
-        <item row="0" column="2">
-         <property name="text">
-          <string>wc</string>
-         </property>
-        </item>
-        <item row="0" column="3">
-         <property name="text">
-          <string> rvr</string>
-         </property>
-        </item>
-       </widget>
-       <widget class="QLabel" name="label">
-        <property name="geometry">
-         <rect>
-          <x>300</x>
-          <y>220</y>
-          <width>561</width>
-          <height>26</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>14</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>Вт. 7 апреля</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-       <widget class="QFrame" name="qwer">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>280</y>
-          <width>291</width>
-          <height>121</height>
-         </rect>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Raised</enum>
-        </property>
-        <widget class="QLabel" name="cur_image_2">
-         <property name="geometry">
-          <rect>
-           <x>20</x>
-           <y>20</y>
-           <width>111</width>
-           <height>71</height>
-          </rect>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::NoFrame</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Plain</enum>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="pixmap">
-          <pixmap>../static/images/cloud.png</pixmap>
-         </property>
-         <property name="scaledContents">
-          <bool>true</bool>
-         </property>
-        </widget>
-        <widget class="QLabel" name="cur_info_2">
-         <property name="geometry">
-          <rect>
-           <x>100</x>
-           <y>0</y>
-           <width>221</width>
-           <height>111</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="contextMenuPolicy">
-          <enum>Qt::ActionsContextMenu</enum>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">line-height: 20px</string>
-         </property>
-         <property name="lineWidth">
-          <number>1</number>
-         </property>
-         <property name="midLineWidth">
-          <number>0</number>
-         </property>
-         <property name="text">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;
-&lt;p style=&quot;line-height: 20px&quot;&gt;Чистое небо&lt;br/&gt;&lt;span style=&quot; color:#00aa00;&quot;&gt;+9&lt;/span&gt;(&lt;span style=&quot; color:#0000ff;&quot;&gt;0&lt;/span&gt;) °C&lt;br/&gt;→ &lt;span style=&quot; color:#00aa00;&quot;&gt;3&lt;/span&gt;-&lt;span style=&quot; color:#00aa00;&quot;&gt;5&lt;/span&gt; м/с&lt;br/&gt;&lt;span style=&quot; color:#ffff00;&quot;&gt;772&lt;/span&gt; мм.рт.ст&lt;br/&gt;0.0 mm | 0% &lt;/p&gt;
-&lt;/body&gt;&lt;/html&gt;</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignHCenter|Qt::AlignTop</set>
-         </property>
-         <property name="wordWrap">
-          <bool>false</bool>
-         </property>
-         <property name="openExternalLinks">
-          <bool>false</bool>
-         </property>
-        </widget>
-        <zorder>cur_info_2</zorder>
-        <zorder>cur_image_2</zorder>
-       </widget>
        <widget class="QLabel" name="cur_info">
         <property name="geometry">
          <rect>
-          <x>630</x>
-          <y>60</y>
-          <width>221</width>
-          <height>131</height>
+          <x>520</x>
+          <y>70</y>
+          <width>411</width>
+          <height>141</height>
          </rect>
         </property>
         <property name="font">
@@ -644,11 +403,11 @@ QTableWidget::item:selected {
         </property>
         <property name="text">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;
-&lt;p style=&quot;line-height: 20px&quot;&gt;Чистое небо&lt;br/&gt;&lt;span style=&quot; color:#00aa00;&quot;&gt;+9&lt;/span&gt;(&lt;span style=&quot; color:#0000ff;&quot;&gt;0&lt;/span&gt;) °C&lt;br/&gt;→ &lt;span style=&quot; color:#00aa00;&quot;&gt;3&lt;/span&gt;-&lt;span style=&quot; color:#00aa00;&quot;&gt;5&lt;/span&gt; м/с&lt;br/&gt;&lt;span style=&quot; color:#ffff00;&quot;&gt;772&lt;/span&gt; мм.рт.ст&lt;br/&gt;0.0 mm | 0% &lt;/p&gt;
+&lt;p style=&quot;line-height: 20px&quot;&gt;Погода: Чистое небо&lt;br/&gt;Температура: &lt;span style=&quot; color:#00aa00;&quot;&gt;+9&lt;/span&gt;(&lt;span style=&quot; color:#0000ff;&quot;&gt;0&lt;/span&gt;) °C&lt;br/&gt;Ветер: → &lt;span style=&quot; color:#00aa00;&quot;&gt;3&lt;/span&gt;-&lt;span style=&quot; color:#00aa00;&quot;&gt;5&lt;/span&gt; м/с&lt;br/&gt;Давление&lt;span style=&quot; color:#ffff00;&quot;&gt;772&lt;/span&gt; мм.рт.ст&lt;br/&gt;Осадки: 0.0 mm | 0% &lt;/p&gt;
 &lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="alignment">
-         <set>Qt::AlignHCenter|Qt::AlignTop</set>
+         <set>Qt::AlignCenter</set>
         </property>
         <property name="wordWrap">
          <bool>false</bool>
@@ -662,7 +421,7 @@ QTableWidget::item:selected {
          <rect>
           <x>70</x>
           <y>0</y>
-          <width>1001</width>
+          <width>1021</width>
           <height>41</height>
          </rect>
         </property>
@@ -681,10 +440,10 @@ QTableWidget::item:selected {
        <widget class="QLabel" name="cur_image">
         <property name="geometry">
          <rect>
-          <x>330</x>
-          <y>70</y>
-          <width>221</width>
-          <height>131</height>
+          <x>320</x>
+          <y>40</y>
+          <width>201</width>
+          <height>201</height>
          </rect>
         </property>
         <property name="frameShape">
@@ -697,7 +456,7 @@ QTableWidget::item:selected {
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap>../static/images/cloud.png</pixmap>
+         <pixmap>resources/images/cloud.png</pixmap>
         </property>
         <property name="scaledContents">
          <bool>true</bool>
@@ -708,13 +467,76 @@ QTableWidget::item:selected {
     </layout>
    </widget>
   </widget>
-  <zorder>frame</zorder>
+  <widget class="QLabel" name="loading">
+   <property name="geometry">
+    <rect>
+     <x>475</x>
+     <y>210</y>
+     <width>250</width>
+     <height>250</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="error_label">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>220</y>
+     <width>841</width>
+     <height>141</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>24</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>ErrorLabel</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QFrame" name="background">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>100</y>
+     <width>1201</width>
+     <height>501</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-image: url(resources/images/background.png)
+</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+  </widget>
+  <zorder>background</zorder>
+  <zorder>header</zorder>
   <zorder>left_city</zorder>
   <zorder>right_city</zorder>
   <zorder>pushFront</zorder>
   <zorder>cur_city</zorder>
   <zorder>pushBack</zorder>
   <zorder>scrollArea</zorder>
+  <zorder>loading</zorder>
+  <zorder>error_label</zorder>
  </widget>
  <resources/>
  <connections/>

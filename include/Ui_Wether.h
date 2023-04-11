@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'untitledMFqTfH.ui'
+** Form generated from reading UI file 'Ui_weatherwdlZlD.ui'
 **
 ** Created by: Qt User Interface Compiler version 6.4.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef UNTITLEDMFQTFH_H
-#define UNTITLEDMFQTFH_H
+#ifndef UI_WEATHERWDLZLD_H
+#define UI_WEATHERWDLZLD_H
 
 #include <QtCore/QVariant>
 #include <QtGui/QIcon>
@@ -30,7 +30,7 @@ public:
     QLabel *right_city;
     QLabel *cur_city;
     QPushButton *pushBack;
-    QFrame *frame;
+    QFrame *header;
     QScrollArea *scrollArea;
     QWidget *scrollAreaWidgetContents;
     QVBoxLayout *verticalLayout;
@@ -38,6 +38,9 @@ public:
     QLabel *cur_info;
     QLabel *cur_header;
     QLabel *cur_image;
+    QLabel *loading;
+    QLabel *error_label;
+    QFrame *background;
 
     void setupUi(QDialog *Weather)
     {
@@ -49,7 +52,9 @@ public:
         QIcon icon;
         icon.addFile(QString::fromUtf8("images/test.jpg"), QSize(), QIcon::Normal, QIcon::Off);
         Weather->setWindowIcon(icon);
-        Weather->setStyleSheet(QString::fromUtf8(""));
+        Weather->setStyleSheet(QString::fromUtf8("QScrollArea { background: transparent; }\n"
+                                                 "QScrollArea > QWidget > QWidget { background: transparent; }\n"
+                                                 "QScrollArea > QWidget > QScrollBar { background: palette(base); }"));
         pushFront = new QPushButton(Weather);
         pushFront->setObjectName("pushFront");
         pushFront->setGeometry(QRect(1080, 0, 111, 91));
@@ -63,13 +68,13 @@ public:
         pushFront->setAutoFillBackground(false);
         pushFront->setStyleSheet(QString::fromUtf8("background-color: transparent; border: none;"));
         QIcon icon1;
-        icon1.addFile(QString::fromUtf8("../resources/images/Front.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon1.addFile(QString::fromUtf8("resources/images/Front.png"), QSize(), QIcon::Normal, QIcon::Off);
         pushFront->setIcon(icon1);
         pushFront->setIconSize(QSize(95, 105));
         pushFront->setAutoRepeat(false);
         left_city = new QLabel(Weather);
         left_city->setObjectName("left_city");
-        left_city->setGeometry(QRect(-110, 0, 551, 41));
+        left_city->setGeometry(QRect(-110, 0, 561, 41));
         QFont font1;
         font1.setPointSize(20);
         left_city->setFont(font1);
@@ -78,14 +83,14 @@ public:
         left_city->setAlignment(Qt::AlignCenter);
         right_city = new QLabel(Weather);
         right_city->setObjectName("right_city");
-        right_city->setGeometry(QRect(760, 0, 551, 41));
+        right_city->setGeometry(QRect(750, 0, 561, 41));
         right_city->setFont(font1);
         right_city->setLayoutDirection(Qt::LeftToRight);
         right_city->setStyleSheet(QString::fromUtf8("color: white"));
         right_city->setAlignment(Qt::AlignCenter);
         cur_city = new QLabel(Weather);
         cur_city->setObjectName("cur_city");
-        cur_city->setGeometry(QRect(310, 30, 560, 41));
+        cur_city->setGeometry(QRect(320, 30, 561, 41));
         cur_city->setFont(font1);
         cur_city->setLayoutDirection(Qt::LeftToRight);
         cur_city->setStyleSheet(QString::fromUtf8("color: white"));
@@ -101,25 +106,29 @@ public:
         pushBack->setAutoFillBackground(false);
         pushBack->setStyleSheet(QString::fromUtf8("background-color: transparent; border: none;"));
         QIcon icon2;
-        icon2.addFile(QString::fromUtf8("../resources/images/Back.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon2.addFile(QString::fromUtf8("resources/images/Back.png"), QSize(), QIcon::Normal, QIcon::Off);
         pushBack->setIcon(icon2);
         pushBack->setIconSize(QSize(95, 105));
         pushBack->setAutoRepeat(false);
-        frame = new QFrame(Weather);
-        frame->setObjectName("frame");
-        frame->setGeometry(QRect(0, 0, 1201, 101));
-        frame->setStyleSheet(QString::fromUtf8("/* background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #4E4E4E, stop:1 #000000);*/\n"
-                                               "background-image: url(../resources/images/main-background.png);\n"
-                                               "border-style: solid; \n"
-                                               "border-bottom-width: 2px;\n"
-                                               "border-color: #000;\n"
-                                               ""));
-        frame->setFrameShape(QFrame::StyledPanel);
-        frame->setFrameShadow(QFrame::Raised);
+        header = new QFrame(Weather);
+        header->setObjectName("header");
+        header->setGeometry(QRect(0, 0, 1201, 101));
+        header->setStyleSheet(QString::fromUtf8("/* background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #4E4E4E, stop:1 #000000);*/\n"
+                                                "background-image: url(resources/images/background-header.png);\n"
+                                                "border-style: solid; \n"
+                                                "border-bottom-width: 2px;\n"
+                                                "border-color: #000;\n"
+                                                ""));
+        header->setFrameShape(QFrame::StyledPanel);
+        header->setFrameShadow(QFrame::Raised);
         scrollArea = new QScrollArea(Weather);
         scrollArea->setObjectName("scrollArea");
         scrollArea->setGeometry(QRect(10, 110, 1180, 480));
-        scrollArea->setStyleSheet(QString::fromUtf8(" QScrollBar:vertical {\n"
+        scrollArea->setStyleSheet(QString::fromUtf8("QScrollBar {\n"
+                                                    "	background-color: none;\n"
+                                                    " }\n"
+                                                    " \n"
+                                                    "QScrollBar:vertical {\n"
                                                     "	border: none;\n"
                                                     "    background: rgb(45, 45, 68);\n"
                                                     "    width: 14px;\n"
@@ -155,11 +164,11 @@ public:
                                                     "}\n"
                                                     "QScrollBar::sub-line:vertical:pressed {	\n"
                                                     "	background-color: rgb(185, 0, 92);\n"
+                                                    ""
                                                     "}\n"
                                                     "\n"
                                                     "/* BTN BOTTOM - SCROLLBAR */\n"
-                                                    "QScrollBar"
-                                                    "::add-line:vertical {\n"
+                                                    "QScrollBar::add-line:vertical {\n"
                                                     "	border: none;\n"
                                                     "	background-color: rgb(59, 59, 90);\n"
                                                     "	height: 15px;\n"
@@ -188,7 +197,7 @@ public:
         scrollAreaWidgetContents->setObjectName("scrollAreaWidgetContents");
         scrollAreaWidgetContents->setGeometry(QRect(0, 0, 1180, 480));
         scrollAreaWidgetContents->setStyleSheet(QString::fromUtf8("QTableWidget {\n"
-                                                                  "    background-color: lightgray;\n"
+                                                                  "    background-color: none;\n"
                                                                   "}\n"
                                                                   "\n"
                                                                   "QTableWidget::item {\n"
@@ -209,46 +218,66 @@ public:
         sizePolicy.setHeightForWidth(main_frame->sizePolicy().hasHeightForWidth());
         main_frame->setSizePolicy(sizePolicy);
         main_frame->setMinimumSize(QSize(0, 0));
-        main_frame->setStyleSheet(QString::fromUtf8("background-color: none;\n"
+        main_frame->setStyleSheet(QString::fromUtf8("background-color: transparent;\n"
                                                     "border: none"));
         main_frame->setFrameShape(QFrame::StyledPanel);
         main_frame->setFrameShadow(QFrame::Raised);
         cur_info = new QLabel(main_frame);
         cur_info->setObjectName("cur_info");
-        cur_info->setGeometry(QRect(630, 60, 221, 111));
-        QFont font2;
-        font2.setPointSize(14);
-        cur_info->setFont(font2);
+        cur_info->setGeometry(QRect(520, 70, 411, 141));
+        cur_info->setFont(font);
         cur_info->setContextMenuPolicy(Qt::ActionsContextMenu);
         cur_info->setStyleSheet(QString::fromUtf8("line-height: 20px"));
         cur_info->setLineWidth(1);
         cur_info->setMidLineWidth(0);
-        cur_info->setAlignment(Qt::AlignHCenter|Qt::AlignTop);
+        cur_info->setAlignment(Qt::AlignCenter);
         cur_info->setWordWrap(false);
         cur_info->setOpenExternalLinks(false);
         cur_header = new QLabel(main_frame);
         cur_header->setObjectName("cur_header");
-        cur_header->setGeometry(QRect(70, 0, 1001, 41));
+        cur_header->setGeometry(QRect(70, 0, 1021, 41));
         cur_header->setFont(font1);
         cur_header->setAlignment(Qt::AlignCenter);
         cur_image = new QLabel(main_frame);
         cur_image->setObjectName("cur_image");
-        cur_image->setGeometry(QRect(340, 60, 201, 111));
+        cur_image->setGeometry(QRect(320, 40, 201, 201));
         cur_image->setFrameShape(QFrame::NoFrame);
         cur_image->setFrameShadow(QFrame::Plain);
-        cur_image->setPixmap(QPixmap(QString::fromUtf8("../resources/images/cloud.png")));
+        cur_image->setPixmap(QPixmap(QString::fromUtf8("resources/images/cloud.png")));
         cur_image->setScaledContents(true);
 
         verticalLayout->addWidget(main_frame);
 
         scrollArea->setWidget(scrollAreaWidgetContents);
-        frame->raise();
+        loading = new QLabel(Weather);
+        loading->setObjectName("loading");
+        loading->setGeometry(QRect(475, 210, 250, 250));
+        loading->setScaledContents(true);
+        error_label = new QLabel(Weather);
+        error_label->setObjectName("error_label");
+        error_label->setGeometry(QRect(180, 220, 841, 141));
+        QFont font2;
+        font2.setPointSize(24);
+        error_label->setFont(font2);
+        error_label->setAlignment(Qt::AlignCenter);
+        error_label->setWordWrap(true);
+        background = new QFrame(Weather);
+        background->setObjectName("background");
+        background->setGeometry(QRect(0, 100, 1201, 501));
+        background->setStyleSheet(QString::fromUtf8("background-image: url(resources/images/background.png)\n"
+                                                    ""));
+        background->setFrameShape(QFrame::StyledPanel);
+        background->setFrameShadow(QFrame::Raised);
+        background->raise();
+        header->raise();
         left_city->raise();
         right_city->raise();
         pushFront->raise();
         cur_city->raise();
         pushBack->raise();
         scrollArea->raise();
+        loading->raise();
+        error_label->raise();
 
         retranslateUi(Weather);
 
@@ -270,10 +299,12 @@ public:
         pushBack->setShortcut(QString());
 #endif // QT_CONFIG(shortcut)
         cur_info->setText(QCoreApplication::translate("Weather", "<html><head/><body>\n"
-                                                                 "<p style=\"line-height: 20px\">\320\247\320\270\321\201\321\202\320\276\320\265 \320\275\320\265\320\261\320\276<br/><span style=\" color:#00aa00;\">+9</span>(<span style=\" color:#0000ff;\">0</span>) \302\260C<br/>\342\206\222 <span style=\" color:#00aa00;\">3</span>-<span style=\" color:#00aa00;\">5</span> \320\274/\321\201<br/><span style=\" color:#ffff00;\">772</span> \320\274\320\274.\321\200\321\202.\321\201\321\202<br/>0.0 mm | 0% </p>\n"
+                                                                 "<p style=\"line-height: 20px\">\320\237\320\276\320\263\320\276\320\264\320\260: \320\247\320\270\321\201\321\202\320\276\320\265 \320\275\320\265\320\261\320\276<br/>\320\242\320\265\320\274\320\277\320\265\321\200\320\260\321\202\321\203\321\200\320\260: <span style=\" color:#00aa00;\">+9</span>(<span style=\" color:#0000ff;\">0</span>) \302\260C<br/>\320\222\320\265\321\202\320\265\321\200: \342\206\222 <span style=\" color:#00aa00;\">3</span>-<span style=\" color:#00aa00;\">5</span> \320\274/\321\201<br/>\320\224\320\260\320\262\320\273\320\265\320\275\320\270\320\265<span style=\" color:#ffff00;\">772</span> \320\274\320\274.\321\200\321\202.\321\201\321\202<br/>\320\236\321\201\320\260\320\264\320\272\320\270: 0.0 mm | 0% </p>\n"
                                                                  "</body></html>", nullptr));
         cur_header->setText(QCoreApplication::translate("Weather", "\320\242\320\265\320\272\321\203\321\211\320\260\321\217 \320\277\320\276\320\263\320\276\320\264\320\260", nullptr));
         cur_image->setText(QString());
+        loading->setText(QCoreApplication::translate("Weather", "TextLabel", nullptr));
+        error_label->setText(QCoreApplication::translate("Weather", "ErrorLabel", nullptr));
     } // retranslateUi
 
 };
@@ -284,4 +315,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // UNTITLEDMFQTFH_H
+#endif // UI_WEATHERWDLZLD_H
